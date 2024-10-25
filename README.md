@@ -1,27 +1,26 @@
-**Thought Process:**        
-I reviewed the official three.js documentation to understand the capabilities of the library, focusing on the GLTFLoader, camera setup, and scene management. I also took help from chatgpt for getting information on three.js because of time constraints also understood this topic raycasting in detail because it was confusing for me when I read it on the three.js documentation.
-I also explored various online examples and tutorials, such as:
-Three.js documentation examples (Three.js Examples)
-Community tutorials on building carousels and using GLTF models effectively for better understandability.
-I grasped the main topics from three.js.
-For this task, I used the iterative approach where I first practiced with the geometrical cubes then I built the carousels incrementally starting with loading models, adding navigation
-and finally implementing user interaction.
-I organized the code into functions to keep it understandable, better readable, and maintainability such as loadModel, visibility etc
-I also added simple navigation logic and event handlers.  
-**Challenges:**  
-Initially, some models did not load correctly due to incorrect paths or formats. I used console logs to debug the loading process and ensured that the file paths were correct.
-The issues I encountered were in their positions. the models were not positioned properly. they were colliding with each other. for this issue, i researched and googled alot and found the solution on the three.js forum community and was able to build the scaling function properly to scale models uniformly, ensuring a consistent visual size across the carousel.
-Implementing mouse hover effects and click events proved challenging. I used raycasting to detect mouse interactions and adjusted the code to make the models clickable.
-I first used the typical js code for the pop-up and mouse hover effects but then after googling, i came to know that we can't use this because they don't work on three.js in 3d models.
-After so much researching, i was not able to find its solution on internet. After spending and wasting so much timing on it i got frustrated and i decided to take the help from the chatgpt and chatgpt was also not able to provide the solution. I wasted the full whole day and night on this but still was not able to encounter it.
-I wil be needing your insights on it. It's still not as good as I wanted it to be but I gained valuable experience in using Three.js for 3D graphics and improved my problem-solving skills by navigating various challenges.
-I also identified potential enhancements, such as adding animation effects during transitions between models and incorporating more interactive elements, which could improve user engagement.  
-**Resources:**  
-  Three.js Documentation  
-  Three.js Examples  
-  Chatgpt  
-  Stackover flow  
-  Reddit  
-  Sketchfab  
-  poly haven  
-  Youtube  
+### **3D Product Carousel Documentation**
+
+#### **Overview**
+Developed a 3D product carousel in Three.js to display GLTF models with carousel navigation, hover effects, and clickable popups showing model details.
+
+#### **Development Steps**
+1. **Research**: Explored Three.js documentation, especially GLTFLoader and raycasting, with additional help from community forums and tutorials.
+2. **Implementation**:
+   - **Model Loading & Carousel Setup**: Built a modular structure with `loadModel`, `updateVisibleModels`, and `scaleModel` for clarity.
+   - **Interactive Elements**: Integrated raycasting to detect clicks on models, allowing for popups with model information.
+
+#### **Challenges**
+1. **Model Positioning**: Initial inconsistencies in model loading and alignment were solved by implementing a scaling function.
+2. **Click Interactions**: Mouse events required custom raycasting setup for interactivity in 3D, which I implemented with help from Three.js community examples.
+
+#### **Future Enhancements**
+Potential improvements include adding carousel animations and further refining interactive popups.
+
+#### **Resources**
+Three.js Documentation, online forums, community tutorials, and 3D models from Sketchfab.  
+https://threejs.org/docs/index.html#api/en/core/Raycaster  
+https://threejs.org/docs/index.html#manual/en/introduction/Loading-3D-models
+https://threejs.org/examples/  
+https://stackoverflow.com/questions/73983106/making-imported-3d-objects-clickable-with-three-js 
+https://discourse.threejs.org/t/zoom-into-object-and-open-popup-on-click/40337  
+https://discourse.threejs.org/t/hot-to-get-pop-up-modal-after-clicking-on-the-object-solved/1255/5  
