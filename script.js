@@ -59,30 +59,33 @@ function onMouseMove(event) {
         (event.clientX / window.innerWidth) * 2 - 1,
         -(event.clientY / window.innerHeight) * 2 + 1
     );
-
     const raycaster = new THREE.Raycaster();
     raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(carouselGroup.children);
-
-    // Reset cursor
+    const intersects = raycaster.intersectObjects(carouselGroup.children, true);
     document.body.style.cursor = 'auto';
-
-    if (intersects.length > 0) {
-        // Change cursor to pointer
-        document.body.style.cursor = 'pointer';
-
-        // Add click event listener for the intersected model
+if (intersects.length > 0) {
         const model = intersects[0].object;
-        model.onClick = () => {
-            alert(model.userData.info); // Show the model info in a popup
-        };
 
-        // Check for click on model
-        window.addEventListener('click', () => {
-            if (model.onClick) model.onClick();
-        });
+        if (activeModel !== model) {
+            activeModel = model;
+            document.body.style.cursor = 'pointer'; 
+        }
+    } else {
+        activeModel = null;
     }
 }
+
+function onModelClick() {
+    if (activeModel && activeModel.userData && activeModel.userData.info) {
+        alert(activeModel.userData.info); // Show model info
+    } else {
+        console.error("Model info is missing.");
+    }
+}
+
+window.addEventListener('mousemove', onMouseMove); 
+window.addEventListener('click', onModelClick);
+
 
 //GLTF LOADER
 function loadModels() {
@@ -95,6 +98,7 @@ function loadModels() {
             modelMesh.userData = { info: model.info }; 
             modelMesh.traverse((child) => {
                 if (child.isMesh) {
+                    child.userData.info = model.info;
                     child.castShadow = true;
                     child.receiveShadow = true;
                 }
